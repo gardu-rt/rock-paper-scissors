@@ -77,6 +77,8 @@ function playGame(sign) {
     } else {
         displayResult(`${message} Match DRAW!`);
     }
+
+    announceWinner(humanScore, computerScore);
 }
 
 function displayResult(message) {
@@ -89,3 +91,17 @@ buttons.forEach(button => {
         playGame(button.id);
     });
 });
+
+function announceWinner(human, computer) {
+    if (human === 5) {
+        alert(`Congrats! You WIN!!!
+            Your Total Score: ${human}
+            Computer Total Score: ${computer}`);
+        location.reload();
+    } else if (computer === 5) {
+        alert(`Game Over!!!
+            Your Total Score: ${human}
+            Computer Total Score: ${computer}`);
+        location.reload();
+    }
+}
