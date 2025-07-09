@@ -1,9 +1,3 @@
-// get human choice
-function getHumanChoice() {
-    // prompt human for choice
-    return prompt("Enter your choice: ").trim().toUpperCase();
-}
-
 // get computer choice
 function getComputerChoice() {
     const choices = ["ROCK", "PAPER", "SCISSORS"];
