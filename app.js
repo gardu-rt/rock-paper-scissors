@@ -45,26 +45,43 @@ function playRound(human, comp) {
 }
 
 const buttons = document.querySelectorAll("button");
-const para = document.querySelector("p");
-const result = document.createElement("span");
+const result = document.querySelector("#result");
+const humanScore = document.querySelector("#human-score");
+const compScore = document.querySelector("#computer-score");
+
+const resultMessage = document.createElement("span");
+
+const textHumanScore = document.createElement("span");
+humanScore.appendChild(textHumanScore);
+textHumanScore.textContent = 0;
+
+const textCompScore = document.createElement("span");
+compScore.appendChild(textCompScore);
+textCompScore.textContent = 0;
 
 function playGame(sign) {
+    let humanScore = parseInt(textHumanScore.textContent);
+    let computerScore = parseInt(textCompScore.textContent);
     const humanChoice = sign;
     const computerChoice = getComputerChoice();
     const message = `You pick ${humanChoice}, Computer pick ${computerChoice}.`;
     const whoIsWin = playRound(humanChoice, computerChoice);
     if (whoIsWin === "human") {
         displayResult(`${message} You WIN!`);
+        humanScore += 1;
+        textHumanScore.textContent = humanScore;
     } else if (whoIsWin === "computer") {
         displayResult(`${message} You LOSE!`);
+        computerScore += 1;
+        textCompScore.textContent = computerScore;
     } else {
         displayResult(`${message} Match DRAW!`);
     }
 }
 
 function displayResult(message) {
-    result.textContent = message;
-    para.appendChild(result);
+    resultMessage.textContent = message;
+    result.appendChild(resultMessage);
 }
 
 buttons.forEach(button => {
