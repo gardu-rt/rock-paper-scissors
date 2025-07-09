@@ -7,35 +7,15 @@ function getComputerChoice() {
 
 // play the round
 function playRound(human, comp) {
-    switch (comp) {
-        case "ROCK":
-            switch (human) {
-                case "ROCK":
-                    return "draw";
-                case "PAPER":
-                    return "human";
-                case "SCISSORS":
-                    return "computer";
-            }
-        case "PAPER":
-            switch (human) {
-                case "ROCK":
-                    return "computer";
-                case "PAPER":
-                    return "draw";
-                case "SCISSORS":
-                    return "human";
-            }
-        case "SCISSORS":
-            switch (human) {
-                case "ROCK":
-                    return "human";
-                case "PAPER":
-                    return "computer";
-                case "SCISSORS":
-                    return "draw";
-            }
-    }
+    if (human === comp) return "draw";
+
+    const sign = {
+        ROCK: "SCISSORS",
+        PAPER: "ROCK",
+        SCISSORS: "PAPER"
+    };
+
+    return sign[human] === comp ? "human" : "computer";
 }
 
 const buttons = document.querySelectorAll("button");
